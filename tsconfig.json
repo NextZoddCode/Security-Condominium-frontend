@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "target": "es2015", // ou superior, por exemplo, "es2017" ou "es2020"
+    "downlevelIteration": true, // Adiciona suporte para iteração em versões mais antigas
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext",
+      "es2015"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

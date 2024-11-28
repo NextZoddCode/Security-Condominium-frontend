@@ -1,0 +1,1 @@
+export const frontendURL = 'http://localhost:3000/packages'

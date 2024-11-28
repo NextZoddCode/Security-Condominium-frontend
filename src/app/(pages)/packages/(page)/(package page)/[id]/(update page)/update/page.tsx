@@ -1,0 +1,32 @@
+// Imports
+import { frontendURL } from "@/app/(pages)/packages/features/utils/api-url/frontend-url"
+
+// Components
+import Link from "next/link"
+import Form from "./components/Form"
+import QueryClientProviderComponent from "@/components/QueryClientProvider/QueryClientProviderComponent"
+
+export default function Page({ params }: { params: { id: string } }) {
+
+    return (
+        <>
+            <div className="flex flex-col justify-center items-center">
+                <Link
+                    href={`${frontendURL}`}
+                    className="mt-10 text-lg text-center text-violet-500 font-bold tracking-wide hover:text-violet-900 transition-all duration-400"
+                >
+                    Voltar
+                </Link>
+                <h2
+                    style={{ textShadow: '4px 6px 5px gray' }}
+                    className="text-3xl font-bold text-center my-12"
+                >
+                    Atualizar
+                </h2>
+            </div>
+            <QueryClientProviderComponent>
+                <Form id={params.id} />
+            </QueryClientProviderComponent>
+        </>
+    )
+}

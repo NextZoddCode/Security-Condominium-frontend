@@ -1,0 +1,1 @@
+export const uploadURL = 'http://localhost:5000/uploads'
