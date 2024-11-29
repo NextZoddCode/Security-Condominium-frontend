@@ -1,12 +1,22 @@
 // Imports
 import { frontendURL } from "../../utils/url/frontendURL";
+import { getServerSession } from "next-auth"
+import { redirect } from "next/navigation"
 
 // Components
 import Link from "next/link";
 import Form from "./components/Form";
 import QueryClientProviderComponent from "@/components/QueryClientProvider/QueryClientProviderComponent";
 
-export default function Page() {
+export default async function Page() {
+
+    const session = await getServerSession()
+
+    if (!session) {
+        // Redireciona para a página de login do NextAuth
+        redirect('/api/auth/signin')
+    }
+
     return (
         <div
             className="w-full my-10 flex flex-col gap-6"

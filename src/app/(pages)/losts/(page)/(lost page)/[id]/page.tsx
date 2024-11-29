@@ -1,12 +1,22 @@
 // Imports
 import { frontendURL } from "../../features/utils/url/frontendURL"
+import { getServerSession } from "next-auth"
+import { redirect } from "next/navigation"
 
 //Components
 import QueryClientProviderComponent from "@/components/QueryClientProvider/QueryClientProviderComponent"
 import Link from "next/link"
 import Lost from "./components/Lost"
 
-export default function Page({ params }: { params: { id: string } }) {
+export default async function Page({ params }: { params: { id: string } }) {
+
+    const session = await getServerSession()
+
+    if (!session) {
+        // Redireciona para a página de login do NextAuth
+        redirect('/api/auth/signin')
+    }
+
     return (
         <>
             <div

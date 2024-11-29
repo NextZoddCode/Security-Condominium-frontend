@@ -1,5 +1,7 @@
 // Imports
 import { frontendURL } from './utils/url/frontendURL'
+import { getServerSession } from "next-auth"
+import { redirect } from "next/navigation"
 
 // Components
 import Image from 'next/image'
@@ -10,9 +12,16 @@ import Court from '../schedule/assets/images/court.jpg'
 import Pool from '../schedule/assets/images/pool.jpg'
 
 
-export default function Page() {
-    return (
+export default async function Page() {
 
+    const session = await getServerSession()
+
+    if (!session) {
+        // Redireciona para a página de login do NextAuth
+        redirect('/api/auth/signin')
+    }
+
+    return (
         <div className="flex flex-col justify-center items-center mt-10 gap-10">
             <h2
                 style={{ textShadow: '4px 6px 5px gray' }}

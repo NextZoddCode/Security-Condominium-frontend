@@ -3,12 +3,22 @@
 // Imports
 import { DataDashboard } from "./data/reportsData"
 import { useState } from "react"
+import { useSession } from "next-auth/react"
+import { redirect } from "next/navigation"
+
 
 // Components
 import Dashboard from "./components/Dashboard"
 import SelectDashboard from "./components/SelectDashboard"
 
-export default function Page() {
+export default async function Page() {
+
+    const { data: session } = useSession()
+
+    if (!session) {
+        // Redireciona para a página de login do NextAuth
+        redirect('/api/auth/signin')
+    }
 
     const { dataUserGraph, dataPackageGraph, dataLostGraph, dataScheduleGraph } = DataDashboard()
 
